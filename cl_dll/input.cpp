@@ -172,6 +172,7 @@ kbutton_t	in_score;
 kbutton_t	in_break;
 kbutton_t	in_graph;  // Display the netgraph
 kbutton_t	in_ducktap;
+kbutton_t	in_minus_jump;
 
 typedef struct kblist_s
 {
@@ -453,6 +454,8 @@ void IN_RightDown(void) {KeyDown(&in_right);}
 void IN_RightUp(void) {KeyUp(&in_right);}
 void IN_DucktapUp(void) {KeyUp(&in_ducktap);}
 void IN_DucktapDown(void) {KeyDown(&in_ducktap);}
+void IN_MinusJumpUp(void) {KeyUp(&in_minus_jump);}
+void IN_MinusJumpDown(void) {KeyDown(&in_minus_jump);}
 
 void IN_ForwardDown(void)
 {
@@ -800,6 +803,7 @@ void CL_DLLEXPORT CL_CreateMove ( float frametime, struct usercmd_s *cmd, int ac
 	{
 		cmd->buttons |= IN_DUCK;
 		autofuncs::handle_ducktap(cmd); // Ducktap takes priority over autojump
+	} else if (in_minus_jump.state & 1) {
 	} else 
 		autofuncs::handle_autojump(cmd);
 
@@ -958,6 +962,7 @@ int CL_ButtonBits( int bResetState )
 		in_alt1.state &= ~2;
 		in_score.state &= ~2;
 		in_ducktap.state &= ~2;
+		in_minus_jump.state &= ~2;
 	}
 
 	return bits;
@@ -1051,6 +1056,8 @@ void InitInput (void)
 	gEngfuncs.pfnAddCommand ("-break",IN_BreakUp);
 	gEngfuncs.pfnAddCommand ("+ducktap", IN_DucktapDown);
 	gEngfuncs.pfnAddCommand ("-ducktap", IN_DucktapUp);
+	gEngfuncs.pfnAddCommand ("+minus_jump", IN_MinusJumpDown);
+	gEngfuncs.pfnAddCommand ("-minus_jump", IN_MinusJumpUp);
 
 	lookstrafe			= gEngfuncs.pfnRegisterVariable ( "lookstrafe", "0", FCVAR_ARCHIVE );
 	lookspring			= gEngfuncs.pfnRegisterVariable ( "lookspring", "0", FCVAR_ARCHIVE );

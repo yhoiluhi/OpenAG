@@ -1056,8 +1056,8 @@ void InitInput (void)
 	gEngfuncs.pfnAddCommand ("-break",IN_BreakUp);
 	gEngfuncs.pfnAddCommand ("+ducktap", IN_DucktapDown);
 	gEngfuncs.pfnAddCommand ("-ducktap", IN_DucktapUp);
-	gEngfuncs.pfnAddCommand ("+minus_jump", IN_MinusJumpDown);
-	gEngfuncs.pfnAddCommand ("-minus_jump", IN_MinusJumpUp);
+	gEngfuncs.pfnAddCommand ("+minusjump", IN_MinusJumpDown);
+	gEngfuncs.pfnAddCommand ("-minusjump", IN_MinusJumpUp);
 
 	lookstrafe			= gEngfuncs.pfnRegisterVariable ( "lookstrafe", "0", FCVAR_ARCHIVE );
 	lookspring			= gEngfuncs.pfnRegisterVariable ( "lookspring", "0", FCVAR_ARCHIVE );

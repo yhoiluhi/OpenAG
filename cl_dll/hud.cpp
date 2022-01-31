@@ -528,6 +528,7 @@ void CHud :: Init( void )
 	m_pCvarHideCorpses = CVAR_CREATE("cl_hidecorpses", "0", FCVAR_ARCHIVE);
 	m_pCvarColor = CVAR_CREATE( "hud_color", "", FCVAR_ARCHIVE );
 	cl_lw = gEngfuncs.pfnGetCvarPointer( "cl_lw" );
+	CVAR_CREATE("showtriggers", "0", 0);
 
 	m_pSpriteList = NULL;
 
@@ -574,6 +575,7 @@ void CHud :: Init( void )
 	m_Scores.Init();
 	m_Settings.Init();
 	m_Speedometer.Init();
+	m_StrafeGuide.Init();
 	m_SuddenDeath.Init();
 	m_Timeout.Init();
 	m_Timer.Init();

@@ -105,6 +105,7 @@ struct HUDLIST {
 #include "hud_scores.h"
 #include "hud_settings.h"
 #include "hud_speedometer.h"
+#include "hud_strafeguide.h"
 #include "hud_suddendeath.h"
 #include "hud_timeout.h"
 #include "hud_timer.h"
@@ -418,6 +419,8 @@ struct message_parms_t
 
 class CHudTextMessage: public CHudBase
 {
+	std::vector<cvar_t*> ignored_message_types;
+
 public:
 	int Init( void );
 	static char *LocaliseTextString( const char *msg, char *dst_buffer, int buffer_size );
@@ -684,6 +687,7 @@ public:
 	CHudScores	m_Scores;
 	CHudSettings	m_Settings;
 	CHudSpeedometer	m_Speedometer;
+	CHudStrafeGuide	m_StrafeGuide;
 	CHudJumpspeed   m_Jumpspeed;
 	CHudSuddenDeath		m_SuddenDeath;
 	CHudTimeout		m_Timeout;
